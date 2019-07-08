@@ -1,13 +1,13 @@
-# battle-of-the-plotting-libraries
+# Battle of the Data Visualization (Plotting) Libraries
 
 
-### Plot a Time Series
+### Time Series data
 
 ```python
 import pandas as pd
 import numpy as np
 
-from bokeh.sampledata import stocks 
+from bokeh.sampledata import stocks
 
 index = pd.DatetimeIndex(stocks.AAPL['date'])
 stock_df = pd.DataFrame({'IBM': stocks.IBM['close'], 'AAPL': stocks.AAPL['close']}, index=index)
@@ -16,7 +16,7 @@ stock_df.head()
 
 Plot 1. Compare the time series
 
-### Plot Categorical Data
+### Categorical data
 
 ```python
 from toolkit import get_mesa_cfs
@@ -31,7 +31,7 @@ accidents.head(15)
 Plot 2. Compare frequency of different accident calls by day of the week
 
 
-### Geographical Data
+### Geographical data
 
 ```python
 from bokeh.sampledata.us_counties import data as counties
@@ -48,7 +48,7 @@ df.head()
 Plot 3. Compare Arizona Unemployment by County using geographic coordinates.
 
 
-### Plot Multivariate
+### Multivariate data
 
 ```python
 from bokeh.sampledata.iris import flowers
@@ -60,7 +60,7 @@ iris_df.head()
 Plot 4. Compare everything (Scatter Matrix)
 
 
-### Phoenix maximum daily temperatures by month over the past century
+### Temporal data
 
 ```python
 phx_df = pd.read_csv('data/phoenix_maximum_daily_temps.csv')
@@ -69,7 +69,7 @@ phx_df.head()
 
 Plot 5. Make a Ridgeline plot or something comparable.
 
-### Gridded Data
+### Gridded data
 
 ```python
 
@@ -80,3 +80,6 @@ src
 ```
 
 Plot 6. Plot the image (n-d array).
+
+
+### Demonstrate a few cool additional plots or visualizations of your own choosing below.
