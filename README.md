@@ -1,3 +1,4 @@
+# battle-of-the-plotting-libraries
 
 
 ```python
@@ -19,20 +20,7 @@ import hvplot.pandas
 
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<style>div.bk-hbox {
-    display: flex;
-    justify-content: center;
-}
-
-div.bk-hbox div.bk-plot {
-    padding: 8px;
-}
-
-div.bk-hbox div.bk-data-table {
-    padding: 20px;
-}
-
-div.hololayout {
+<style>div.hololayout {
   display: flex;
   align-items: center;
   margin: 0;
@@ -124,6 +112,19 @@ div.hologroup {
 .noUi-target {
   margin-left: 0.5em;
   margin-right: 0.5em;
+}
+
+div.bk-hbox {
+    display: flex;
+    justify-content: center;
+}
+
+div.bk-hbox div.bk-plot {
+    padding: 8px;
+}
+
+div.bk-hbox div.bk-data-table {
+    padding: 20px;
 }
 </style>
 
@@ -222,8 +223,8 @@ df = get_mesa_cfs()
 ```
 
     Collected 356004 records, from 1/2017 up to 7/2019.
-    CPU times: user 51.8 s, sys: 645 ms, total: 52.5 s
-    Wall time: 1min 7s
+    CPU times: user 48.1 s, sys: 654 ms, total: 48.8 s
+    Wall time: 1min 4s
 
 
 
@@ -373,10 +374,7 @@ from bokeh.sampledata.unemployment import data as unemployment
 counties = [dict(county, Unemployment=unemployment[cid])
             for cid, county in counties.items()
             if county["state"] == "az"]
-```
 
-
-```python
 df = pd.DataFrame(counties)
 df.head()
 ```
@@ -469,10 +467,278 @@ Task: Plot Arizona Unemployment by County
 
 ```
 
+### Plot Multivariate
+
+
+```python
+from bokeh.sampledata.iris import flowers
+iris_df = pd.DataFrame(flowers)
+iris_df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 
 ```python
 
 ```
+
+### Phoenix maximum daily temperatures by month over the past century
+
+
+```python
+phx_df = pd.read_csv('data/phoenix_maximum_daily_temps.csv')
+phx_df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Jan</th>
+      <th>Feb</th>
+      <th>Mar</th>
+      <th>Apr</th>
+      <th>May</th>
+      <th>Jun</th>
+      <th>Jul</th>
+      <th>Aug</th>
+      <th>Sep</th>
+      <th>Oct</th>
+      <th>Nov</th>
+      <th>Dec</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1919</td>
+      <td>74</td>
+      <td>74</td>
+      <td>86</td>
+      <td>97</td>
+      <td>101</td>
+      <td>113</td>
+      <td>110</td>
+      <td>110</td>
+      <td>106</td>
+      <td>90</td>
+      <td>84</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1920</td>
+      <td>79</td>
+      <td>76</td>
+      <td>83</td>
+      <td>94</td>
+      <td>105</td>
+      <td>110</td>
+      <td>114</td>
+      <td>108</td>
+      <td>105</td>
+      <td>98</td>
+      <td>79</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1921</td>
+      <td>77</td>
+      <td>92</td>
+      <td>95</td>
+      <td>96</td>
+      <td>101</td>
+      <td>110</td>
+      <td>110</td>
+      <td>107</td>
+      <td>105</td>
+      <td>100</td>
+      <td>89</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1922</td>
+      <td>69</td>
+      <td>80</td>
+      <td>83</td>
+      <td>92</td>
+      <td>105</td>
+      <td>114</td>
+      <td>112</td>
+      <td>110</td>
+      <td>107</td>
+      <td>100</td>
+      <td>80</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1923</td>
+      <td>84</td>
+      <td>82</td>
+      <td>84</td>
+      <td>92</td>
+      <td>104</td>
+      <td>112</td>
+      <td>111</td>
+      <td>105</td>
+      <td>105</td>
+      <td>92</td>
+      <td>80</td>
+      <td>71</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+
+```
+
+### Gridded Data
+
+
+```python
+x, y = np.meshgrid(range(-5, 5), range(-5, 5))
+z = x ** 2 + y ** 2
+src = np.stack((x, y, z))
+src
+```
+
+
+
+
+    array([[[-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4],
+            [-5, -4, -3, -2, -1,  0,  1,  2,  3,  4]],
+    
+           [[-5, -5, -5, -5, -5, -5, -5, -5, -5, -5],
+            [-4, -4, -4, -4, -4, -4, -4, -4, -4, -4],
+            [-3, -3, -3, -3, -3, -3, -3, -3, -3, -3],
+            [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+            [ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1],
+            [ 2,  2,  2,  2,  2,  2,  2,  2,  2,  2],
+            [ 3,  3,  3,  3,  3,  3,  3,  3,  3,  3],
+            [ 4,  4,  4,  4,  4,  4,  4,  4,  4,  4]],
+    
+           [[50, 41, 34, 29, 26, 25, 26, 29, 34, 41],
+            [41, 32, 25, 20, 17, 16, 17, 20, 25, 32],
+            [34, 25, 18, 13, 10,  9, 10, 13, 18, 25],
+            [29, 20, 13,  8,  5,  4,  5,  8, 13, 20],
+            [26, 17, 10,  5,  2,  1,  2,  5, 10, 17],
+            [25, 16,  9,  4,  1,  0,  1,  4,  9, 16],
+            [26, 17, 10,  5,  2,  1,  2,  5, 10, 17],
+            [29, 20, 13,  8,  5,  4,  5,  8, 13, 20],
+            [34, 25, 18, 13, 10,  9, 10, 13, 18, 25],
+            [41, 32, 25, 20, 17, 16, 17, 20, 25, 32]]])
+
+
 
 
 ```python
