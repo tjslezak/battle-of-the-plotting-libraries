@@ -4,10 +4,11 @@
 ### Plot a Time Series
 
 ```python
-from bokeh.sampledata import stocks 
-```
+import pandas as pd
+import numpy as np
 
-```python
+from bokeh.sampledata import stocks 
+
 index = pd.DatetimeIndex(stocks.AAPL['date'])
 stock_df = pd.DataFrame({'IBM': stocks.IBM['close'], 'AAPL': stocks.AAPL['close']}, index=index)
 stock_df.head()
@@ -19,13 +20,9 @@ Plot 1. Compare the time series
 
 ```python
 from toolkit import get_mesa_cfs
-```
 
-```python
 df = get_mesa_cfs()
-```
 
-```python
 accidents = df[df['Event Type Description'].str.contains('ACCIDENT')].reset_index()
 accidents = accidents.groupby(['Event Type Description', pd.DatetimeIndex(accidents.call_dt).day_name()]).size().reset_index(name='counts')
 accidents.head(15)
@@ -55,6 +52,7 @@ Plot 3. Compare Arizona Unemployment by County using geographic coordinates.
 
 ```python
 from bokeh.sampledata.iris import flowers
+
 iris_df = pd.DataFrame(flowers)
 iris_df.head()
 ```
@@ -74,6 +72,7 @@ Plot 5. Make a Ridgeline plot or something comparable.
 ### Gridded Data
 
 ```python
+
 x, y = np.meshgrid(range(-5, 5), range(-5, 5))
 z = x ** 2 + y ** 2
 src = np.stack((x, y, z))
